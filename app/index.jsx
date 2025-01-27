@@ -1,5 +1,6 @@
 import { Text, View, ScrollView, Image, StyleSheet } from "react-native";
 import Nav from "./nav";
+import ProfileStats from "./profile-stats";
 
 export default function Index() {
   return (
@@ -19,6 +20,8 @@ export default function Index() {
       </Text>
 
       <Nav/>
+
+      <ProfileStats/>
 
     </View>
   );
