@@ -3,9 +3,7 @@ import {View, Text, StyleSheet} from "react-native";
 
 function Nav() {
     return (
-        <View
-            style={styles.viewStyle}
-        >
+        <View style={styles.viewStyle}>
             <Text style={styles.textStyle}>Profile</Text>
             <Text style={styles.textStyle}>Nutrition</Text>
             <Text style={styles.textStyle}>Workouts</Text>

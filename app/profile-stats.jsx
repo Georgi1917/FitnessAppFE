@@ -21,7 +21,7 @@ function ProfileStats() {
 
             <View style={styles.individualCont}>
                 <Text style={styles.textStyle}>Total</Text>
-                <Text style={styles.textStyle}>Tonnage</Text>
+                <Text style={styles.textStyle}>Steps</Text>
                 <Text style={styles.textStyle}>0</Text>
             </View>
             
@@ -37,8 +37,9 @@ const styles = StyleSheet.create(
         container: {
             display: "flex",
             flexDirection: "row",
-            gap: 10,
-            margin: 15,
+            gap: 5,
+            margin: 10,
+            height: 80,
         },
         textStyle: {
             color: "#fff",
@@ -48,6 +49,8 @@ const styles = StyleSheet.create(
             backgroundColor: "#2A2E37",
             flex: 1,
             borderRadius: 10,
+            alignContent: "center",
+            justifyContent: "center",
         }
     }
 )
