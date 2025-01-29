@@ -30,9 +30,9 @@ export default function Index() {
 
         <ProfileStats/>
 
-      </View>
+        <CalorieChart/>
 
-      <CalorieChart/>
+      </View>
 
       <Nav/>
 
