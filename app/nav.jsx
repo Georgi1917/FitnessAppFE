@@ -1,11 +1,11 @@
-
+import { Link } from "expo-router";
 import {View, Text, StyleSheet} from "react-native";
 
 function Nav() {
     return (
         <View style={styles.viewStyle}>
-            <Text style={styles.textStyle}>Profile</Text>
-            <Text style={styles.textStyle}>Nutrition</Text>
+            <Link href="/">Profile</Link>
+            <Link href="/nutrition-page">Nutrition</Link>
             <Text style={styles.textStyle}>Workouts</Text>
         </View>
     )

@@ -3,7 +3,7 @@ import Nav from "./nav";
 import ProfileStats from "./profile-stats";
 import CalorieChart from "./calorie-chart";
 
-export default function Index() {
+function Index() {
 
   return (
     <View style={styles.containerStyle}>
@@ -80,3 +80,5 @@ const styles = StyleSheet.create(
     }
   }
 )
+
+export default Index;
