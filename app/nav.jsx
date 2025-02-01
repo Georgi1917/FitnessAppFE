@@ -4,9 +4,9 @@ import {View, Text, StyleSheet} from "react-native";
 function Nav() {
     return (
         <View style={styles.viewStyle}>
-            <Link href="/">Profile</Link>
-            <Link href="/nutrition-page">Nutrition</Link>
-            <Text style={styles.textStyle}>Workouts</Text>
+            <Link href="/" style={styles.linkStyle}>Profile</Link>
+            <Link href="/nutrition-page" style={styles.linkStyle}>Nutrition</Link>
+            <Link href="/workout-page" style={styles.linkStyle}>Workouts</Link>
         </View>
     )
 }
@@ -20,7 +20,7 @@ const styles = StyleSheet.create(
             alignContent: "center",
             backgroundColor: '#1E90FF',
         },
-        textStyle: {
+        linkStyle: {
             fontSize: 18,
             flex: 1,
             padding: 10,

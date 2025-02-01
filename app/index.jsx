@@ -34,8 +34,6 @@ function Index() {
 
       </View>
 
-      <Nav/>
-
     </View>
   );
 
@@ -44,7 +42,7 @@ function Index() {
 const styles = StyleSheet.create(
   {
     innerContainer: {
-      flex: 1
+      flex: 1,
     },
     containerStyle: {
       flex: 1,
