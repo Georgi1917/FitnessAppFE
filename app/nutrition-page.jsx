@@ -1,19 +1,23 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
-
+import { Link } from "expo-router";
 
 function NutritionPage() {
+
+    const today = new Date().toDateString();
 
     return(
         <View style={styles.outerContainer}>
 
-            <Text style={styles.textStyle}>
-                Meal 1
-            </Text>
+            <View>
+                <Text style={styles.textStyle}>
+                    Meals For Today ({today})
+                </Text>
+            </View>
             
             <TouchableOpacity style={styles.buttonStyle}>
-                <Text style={styles.buttonText}>
+                <Link href="/add-meal-page" style={styles.buttonText}>
                     Add Meal
-                </Text>
+                </Link>
             </TouchableOpacity>
 
         </View>
@@ -29,6 +33,7 @@ const styles = StyleSheet.create(
         },
         textStyle: {
             color: "#fff",
+            textAlign: "center",
         },
         buttonStyle: {
             backgroundColor: "#E0FE10",

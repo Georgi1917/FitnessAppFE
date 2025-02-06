@@ -1,5 +1,4 @@
 import { Text, View, ScrollView, Image, StyleSheet } from "react-native";
-import Nav from "./nav";
 import ProfileStats from "./profile-stats";
 import CalorieChart from "./calorie-chart";
 
