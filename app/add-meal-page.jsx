@@ -1,4 +1,5 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { Link } from "expo-router";
 
 function AddMeal() {
 
@@ -19,9 +20,9 @@ function AddMeal() {
 
                 <TouchableOpacity style={styles.buttonStyle}>
 
-                    <Text style={styles.buttonText}>
+                    <Link href="/custom-meal-page" style={styles.buttonText}>
                         Add Custom Meal
-                    </Text>
+                    </Link>
 
                 </TouchableOpacity>
 
