@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 
 function CustomMeal() {
 
@@ -6,7 +6,21 @@ function CustomMeal() {
         <View style={styles.outerContainer}>
 
             <TextInput placeholder="Name Of Meal" style={styles.textInput} />
-            <TextInput placeholder="Calories" style={styles.textInput} />
+
+            <View style={styles.caloriePhotoContainer}>
+
+                <TouchableOpacity style={[styles.buttonStyle, styles.individualCont]}>
+
+                    <Text style={styles.buttonText}>
+                        Add Photo
+                    </Text>
+
+                </TouchableOpacity>
+
+
+                <TextInput placeholder="Calories" style={[styles.textInput, styles.individualCont]} />
+
+            </View>
 
             <View>
 
@@ -16,7 +30,7 @@ function CustomMeal() {
 
             </View>
 
-            <TouchableOpacity style={styles.buttonStyle}>
+            <TouchableOpacity style={[styles.buttonStyle, styles.addButton]}>
 
                 <Text style={styles.buttonText}>
                     Add
@@ -40,6 +54,12 @@ const styles = StyleSheet.create(
             margin: 10,
             borderRadius: 12,
         },
+        caloriePhotoContainer: {
+            flexDirection: "row",
+        },
+        individualCont: {
+            flex: 1,
+        },
         buttonStyle: {
             backgroundColor: "#E0FE10",
             padding: 10,
@@ -50,6 +70,11 @@ const styles = StyleSheet.create(
             color: "#1D2228",
             textTransform: "uppercase",
             textAlign: "center",
+        },
+        addButton: {
+            width: Dimensions.get("window").width * 0.7,
+            alignSelf: "center",
+            justifyContent: "center",
         }
     }
 )
