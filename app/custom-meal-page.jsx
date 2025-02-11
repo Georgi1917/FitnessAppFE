@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 
 function CustomMeal() {
@@ -39,11 +40,12 @@ function CustomMeal() {
             </TouchableOpacity>
 
         </View>
+
     )
 
 }
 
-const styles = StyleSheet.create(
+let styles = StyleSheet.create(
     {
         outerContainer: {
             flex: 1,
@@ -75,7 +77,7 @@ const styles = StyleSheet.create(
             width: Dimensions.get("window").width * 0.7,
             alignSelf: "center",
             justifyContent: "center",
-        }
+        },
     }
 )
 
