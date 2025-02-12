@@ -1,7 +1,27 @@
-import React, { useRef } from "react";
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
+import { useState } from "react";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions, Image } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 
 function CustomMeal() {
+
+    const [image, setImage] = useState(null);
+
+    const pickImage = async () => {
+
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ['images'],
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        console.log(result);
+
+        if (!result.canceled) {
+            setImage(result.assets[0].uri);
+        }
+
+    };
 
     return(
         <View style={styles.outerContainer}>
@@ -10,7 +30,7 @@ function CustomMeal() {
 
             <View style={styles.caloriePhotoContainer}>
 
-                <TouchableOpacity style={[styles.buttonStyle, styles.individualCont]}>
+                <TouchableOpacity style={[styles.buttonStyle, styles.individualCont]} onPress={pickImage}>
 
                     <Text style={styles.buttonText}>
                         Add Photo
@@ -38,6 +58,8 @@ function CustomMeal() {
                 </Text>
 
             </TouchableOpacity>
+
+            {image && <Image source={{ uri: image }} style={styles.imageCont} />}
 
         </View>
 
@@ -78,6 +100,10 @@ let styles = StyleSheet.create(
             alignSelf: "center",
             justifyContent: "center",
         },
+        imageCont: {
+            width: 200,
+            height: 200,
+        }
     }
 )
 
