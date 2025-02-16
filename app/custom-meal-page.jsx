@@ -45,9 +45,9 @@ function CustomMeal() {
 
             <View>
 
-                <TextInput placeholder="Protein" style={styles.textInput} />
-                <TextInput placeholder="Carbs" style={styles.textInput} />
-                <TextInput placeholder="Fat" style={styles.textInput} />
+                <TextInput placeholder="Protein" style={[styles.textInput, styles.macrosStyle]} />
+                <TextInput placeholder="Carbs" style={[styles.textInput, styles.macrosStyle]} />
+                <TextInput placeholder="Fat" style={[styles.textInput, styles.macrosStyle]} />
 
             </View>
 
@@ -103,6 +103,9 @@ let styles = StyleSheet.create(
         imageCont: {
             width: 200,
             height: 200,
+        },
+        macrosStyle: {
+            width: Dimensions.get("window").width * 0.46
         }
     }
 )
