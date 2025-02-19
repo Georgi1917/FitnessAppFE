@@ -31,7 +31,7 @@ function CustomMeal() {
                 <TouchableOpacity onPress={pickImage} style={styles.imageButton}>
 
                     <Image 
-                        source={{ uri: "https://th.bing.com/th/id/R.253d6a13f8a5736cc16b94f899d67aca?rik=eLjTiHyu5FdI9A&pid=ImgRaw&r=0" }} 
+                        source={image ? { uri : image } : { uri : "https://cdn2.iconfinder.com/data/icons/gastronomy-3-outline-vol-1/60/56_-Boiled_Vegetables-_gastronomy_food_cooking-1024.png" }} 
                         style={styles.image}
                     />
 
