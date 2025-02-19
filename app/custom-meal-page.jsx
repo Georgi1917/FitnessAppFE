@@ -26,26 +26,30 @@ function CustomMeal() {
     return(
         <View style={styles.outerContainer}>
 
+            <View style={styles.imageButtonCont}>
+
+                <TouchableOpacity onPress={pickImage} style={styles.imageButton}>
+
+                    <Image 
+                        source={{ uri: "https://th.bing.com/th/id/R.253d6a13f8a5736cc16b94f899d67aca?rik=eLjTiHyu5FdI9A&pid=ImgRaw&r=0" }} 
+                        style={styles.image}
+                    />
+
+                </TouchableOpacity>
+
+            </View>
+
             <TextInput placeholder="Name Of Meal" style={styles.textInput} />
 
             <View style={styles.caloriePhotoContainer}>
 
-                <TouchableOpacity style={[styles.buttonStyle, styles.individualCont]} onPress={pickImage}>
-
-                    <Text style={styles.buttonText}>
-                        Add Photo
-                    </Text>
-
-                </TouchableOpacity>
-
-
-                <TextInput placeholder="Calories" style={[styles.textInput, styles.individualCont]} />
+                <TextInput placeholder="Protein" style={[styles.textInput, styles.macrosStyle]} />
+                <TextInput placeholder="Calories" style={[styles.textInput, styles.macrosStyle]} />
 
             </View>
 
-            <View>
+            <View style={styles.caloriePhotoContainer}>
 
-                <TextInput placeholder="Protein" style={[styles.textInput, styles.macrosStyle]} />
                 <TextInput placeholder="Carbs" style={[styles.textInput, styles.macrosStyle]} />
                 <TextInput placeholder="Fat" style={[styles.textInput, styles.macrosStyle]} />
 
@@ -80,9 +84,8 @@ let styles = StyleSheet.create(
         },
         caloriePhotoContainer: {
             flexDirection: "row",
-        },
-        individualCont: {
-            flex: 1,
+            alignContent: "center",
+            justifyContent: "center",
         },
         buttonStyle: {
             backgroundColor: "#E0FE10",
@@ -100,12 +103,21 @@ let styles = StyleSheet.create(
             alignSelf: "center",
             justifyContent: "center",
         },
-        imageCont: {
-            width: 200,
-            height: 200,
+        image: {
+            width: 220,
+            height: 220,
+            backgroundColor: "#404654",
+            borderRadius: 110,
+            margin: 10
         },
         macrosStyle: {
-            width: Dimensions.get("window").width * 0.46
+            width: Dimensions.get("window").width * 0.45
+        },
+        imageButtonCont: {
+            alignItems: "center",
+        },
+        imageButton: {
+            width: 220,
         }
     }
 )
