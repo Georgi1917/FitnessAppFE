@@ -1,10 +1,24 @@
-import { useState } from "react";
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions, Image } from "react-native";
+import { useState, useRef, useMemo } from "react";
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions, Image, Button } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import BottomSheet from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 function CustomMeal() {
 
     const [image, setImage] = useState(null);
+
+    const bottomSheetRef = useRef(null);
+
+    const snapPoints = useMemo(() => ['25%', '50%'], []);
+
+    const handleOpenSheet = () => {
+        bottomSheetRef.current?.expand();
+    }
+
+    const handleClosePress = () => {
+        bottomSheetRef.current?.close();
+      };
 
     const pickImage = async () => {
 
@@ -24,48 +38,61 @@ function CustomMeal() {
     };
 
     return(
-        <View style={styles.outerContainer}>
+        <GestureHandlerRootView>
 
-            <View style={styles.imageButtonCont}>
+            <View style={styles.outerContainer}>
 
-                <TouchableOpacity onPress={pickImage} style={styles.imageButton}>
+                <View style={styles.imageButtonCont}>
 
-                    <Image 
-                        source={image ? { uri : image } : { uri : "https://cdn2.iconfinder.com/data/icons/gastronomy-3-outline-vol-1/60/56_-Boiled_Vegetables-_gastronomy_food_cooking-1024.png" }} 
-                        style={styles.image}
-                    />
+                    <TouchableOpacity onPress={pickImage} style={styles.imageButton}>
+
+                        <Image 
+                            source={image ? { uri : image } : { uri : "https://cdn2.iconfinder.com/data/icons/gastronomy-3-outline-vol-1/60/56_-Boiled_Vegetables-_gastronomy_food_cooking-1024.png" }} 
+                            style={styles.image}
+                        />
+
+                    </TouchableOpacity>
+
+                </View>
+
+                <TextInput placeholder="Name Of Meal" style={styles.textInput} />
+
+                <View style={styles.caloriePhotoContainer}>
+
+                    <TextInput placeholder="Protein" style={[styles.textInput, styles.macrosStyle]} />
+                    <TextInput placeholder="Calories" style={[styles.textInput, styles.macrosStyle]} />
+
+                </View>
+
+                <View style={styles.caloriePhotoContainer}>
+
+                    <TextInput placeholder="Carbs" style={[styles.textInput, styles.macrosStyle]} />
+                    <TextInput placeholder="Fat" style={[styles.textInput, styles.macrosStyle]} />
+
+                </View>
+
+                <TouchableOpacity style={[styles.buttonStyle, styles.addButton]}>
+
+                    <Text style={styles.buttonText}>
+                        Add
+                    </Text>
 
                 </TouchableOpacity>
 
-            </View>
+                <Button title="Open Bottom Sheet" onPress={handleOpenSheet} />
 
-            <TextInput placeholder="Name Of Meal" style={styles.textInput} />
+                <BottomSheet ref={bottomSheetRef} index={-1} snapPoints={snapPoints}>
 
-            <View style={styles.caloriePhotoContainer}>
+                    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                        <Text>Hello World</Text>
+                        <Button title="Close" onPress={handleClosePress} />
+                    </View>
 
-                <TextInput placeholder="Protein" style={[styles.textInput, styles.macrosStyle]} />
-                <TextInput placeholder="Calories" style={[styles.textInput, styles.macrosStyle]} />
-
-            </View>
-
-            <View style={styles.caloriePhotoContainer}>
-
-                <TextInput placeholder="Carbs" style={[styles.textInput, styles.macrosStyle]} />
-                <TextInput placeholder="Fat" style={[styles.textInput, styles.macrosStyle]} />
+                </BottomSheet>
 
             </View>
 
-            <TouchableOpacity style={[styles.buttonStyle, styles.addButton]}>
-
-                <Text style={styles.buttonText}>
-                    Add
-                </Text>
-
-            </TouchableOpacity>
-
-            {image && <Image source={{ uri: image }} style={styles.imageCont} />}
-
-        </View>
+        </GestureHandlerRootView>
 
     )
 
