@@ -1,24 +1,24 @@
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useCallback } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Dimensions, Image, Button } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import BottomSheet from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetView, BottomSheetBackdrop } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 
 function CustomMeal() {
 
-    const [image, setImage] = useState(null);
-
+    const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
+    
     const bottomSheetRef = useRef(null);
 
-    const snapPoints = useMemo(() => ['25%', '50%'], []);
+    const handleClosePress = () => bottomSheetRef.current?.close();
+    const handleOpenPress = () => bottomSheetRef.current?.snapToIndex(1);
 
-    const handleOpenSheet = () => {
-        bottomSheetRef.current?.expand();
-    }
+    const renderBackDrop = useCallback(
+        (props) => <BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} {...props} />, []
+    )
 
-    const handleClosePress = () => {
-        bottomSheetRef.current?.close();
-      };
+    const [image, setImage] = useState(null);
 
     const pickImage = async () => {
 
@@ -79,14 +79,19 @@ function CustomMeal() {
 
                 </TouchableOpacity>
 
-                <Button title="Open Bottom Sheet" onPress={handleOpenSheet} />
+                <BottomSheet snapPoints={snapPoints} index={-1} ref={bottomSheetRef} enablePanDownToClose={true} backdropComponent={renderBackDrop}>
 
-                <BottomSheet ref={bottomSheetRef} index={-1} snapPoints={snapPoints}>
+                    <BottomSheetView>
 
-                    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                        <Text>Hello World</Text>
-                        <Button title="Close" onPress={handleClosePress} />
-                    </View>
+                        <TouchableOpacity style={[styles.buttonStyle, styles.addButton]}>
+                            <Text style={styles.buttonText}>Open Gallery</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={[styles.buttonStyle, styles.addButton]}>
+                            <Text style={styles.buttonText}>Open Camera</Text>
+                        </TouchableOpacity>
+
+                    </BottomSheetView>
 
                 </BottomSheet>
 
