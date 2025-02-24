@@ -35,7 +35,30 @@ function CustomMeal() {
             setImage(result.assets[0].uri);
         }
 
+        handleClosePress();
+
     };
+
+    const captureImage = async () => {
+
+        let result = await ImagePicker.launchCameraAsync(
+            {
+                mediaTypes: ['images'],
+                allowsEditing: true,
+                aspect: [4, 3],
+                quality: 1,
+            }
+        );
+
+        console.log(result);
+
+        if (!result.canceled) {
+            setImage(result.assets[0].uri);
+        }
+
+        handleClosePress();
+
+    }
 
     return(
         <GestureHandlerRootView>
@@ -44,7 +67,7 @@ function CustomMeal() {
 
                 <View style={styles.imageButtonCont}>
 
-                    <TouchableOpacity onPress={pickImage} style={styles.imageButton}>
+                    <TouchableOpacity onPress={handleOpenPress} style={styles.imageButton}>
 
                         <Image 
                             source={image ? { uri : image } : { uri : "https://cdn2.iconfinder.com/data/icons/gastronomy-3-outline-vol-1/60/56_-Boiled_Vegetables-_gastronomy_food_cooking-1024.png" }} 
@@ -83,12 +106,16 @@ function CustomMeal() {
 
                     <BottomSheetView>
 
-                        <TouchableOpacity style={[styles.buttonStyle, styles.addButton]}>
+                        <TouchableOpacity style={[styles.buttonStyle, styles.addButton]} onPress={pickImage}>
                             <Text style={styles.buttonText}>Open Gallery</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={[styles.buttonStyle, styles.addButton]}>
+                        <TouchableOpacity style={[styles.buttonStyle, styles.addButton]} onPress={captureImage}>
                             <Text style={styles.buttonText}>Open Camera</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={[styles.buttonStyle, styles.addButton]} onPress={handleClosePress}>
+                            <Text style={styles.buttonText}>Close</Text>
                         </TouchableOpacity>
 
                     </BottomSheetView>
