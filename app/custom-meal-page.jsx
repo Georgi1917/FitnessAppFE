@@ -7,7 +7,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 function CustomMeal() {
 
-    const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
+    const snapPoints = useMemo(() => ["35%", "50%", "75%"], []);
     
     const bottomSheetRef = useRef(null);
 
@@ -102,7 +102,12 @@ function CustomMeal() {
 
                 </TouchableOpacity>
 
-                <BottomSheet snapPoints={snapPoints} index={-1} ref={bottomSheetRef} enablePanDownToClose={true} backdropComponent={renderBackDrop}>
+                <BottomSheet snapPoints={snapPoints} index={-1} 
+                             ref={bottomSheetRef} enablePanDownToClose={true} 
+                             backdropComponent={renderBackDrop}
+                             backgroundStyle={{ backgroundColor: "#404654" }}
+                             handleIndicatorStyle={{ backgroundColor: "#FFF" }}
+                >
 
                     <BottomSheetView>
 
@@ -177,7 +182,7 @@ let styles = StyleSheet.create(
         },
         imageButton: {
             width: 220,
-        }
+        },
     }
 )
 
